@@ -35,3 +35,6 @@ const findPalindrome = (s, i, j) => {
   return s.slice(i + 1, j);
 };
 ```
+
+</p>
+</details>
