@@ -1,4 +1,4 @@
-[zigzag conversion](https://leetcode.com/problems/zigzag-conversion/)
+## [zigzag conversion](https://leetcode.com/problems/zigzag-conversion/)
 
 <details>
 <summary>풀이</summary>
