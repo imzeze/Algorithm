@@ -55,3 +55,37 @@ const maxArea = (arr) => {
 
 </p>
 </details>
+
+<br />
+
+<details>
+<summary>재풀이</summary>
+<p>
+
+- 양끝에 `leftPoint`와 `rightPoint`를 둔다.
+
+- `leftPoint`와 `rightPoint` 사이의 영역을 구한다.
+
+- point의 높이가 높아지면 영역의 크기가 커지기 때문에 `leftPoint`와 `rightPoint` 중 높이가 낮은 point를 좌 또는 우로 한칸씩 옮겨 영역의 크기를 다시 구한다.
+
+```js
+const maxArea = (arr) => {
+  let leftPoint = 0;
+  let rightPoint = arr.length - 1;
+
+  let result = 0;
+  while (leftPoint < rightPoint) {
+    result = Math.max(
+      result,
+      Math.min(arr[leftPoint], arr[rightPoint]) * (rightPoint - leftPoint)
+    );
+    if (arr[leftPoint] < arr[rightPoint]) leftPoint++;
+    else rightPoint--;
+  }
+
+  return result;
+};
+```
+
+</p>
+</details>
