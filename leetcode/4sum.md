@@ -1,3 +1,22 @@
+## [4sum](https://leetcode.com/problems/3sum/)
+
+<br />
+
+### 관련 이론
+
+- sort
+- two point
+
+<br />
+
+<details>
+<summary>풀이</summary>
+<p>
+
+- [3sum](https://github.com/imzeze/Algorithm/blob/main/leetcode/3sum.md)와 동일한 접근 방법으로 해결한다.
+- 가장 먼저 합의 비교를 위해 정렬을 한다.
+- 첫번째 point와 left point를 고정으로 해두고, 총합(sum)과 target의 크기 비교에 따라 middle과 right point를 조정한다.
+
 ```js
 var fourSum = function (nums, target) {
   const result = [];
@@ -27,7 +46,7 @@ var fourSum = function (nums, target) {
 
 ---
 
-result unique하게 return 하는 버전
+result를 unique하게 return 하는 버전
 
 ```js
 var fourSum = function (nums, target) {
@@ -77,3 +96,6 @@ var fourSum = function (nums, target) {
   return result;
 };
 ```
+
+</p>
+</details>
