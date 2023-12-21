@@ -1,9 +1,3 @@
-/**
- * @param {string[][]} equations
- * @param {number[]} values
- * @param {string[][]} queries
- * @return {number[]}
- */
 var calcEquation = function (equations, values, queries) {
   const answer = [];
   const equationList = {};
@@ -15,23 +9,25 @@ var calcEquation = function (equations, values, queries) {
     equationList[y] = { ...equationList[y], [x]: 1 / values[i] };
   }
 
-  const dfs = (x, y) => {
+  const dfs = (x, y, visited) => {
     if (!equationList[x] || !equationList[y]) return -1;
-    if (equationList[x][y] && equationList[y][x]) {
-      return equationList[x][y] / equationList[y][x];
-    } else {
-      for (neighbor of Object.keys(equationList[x])) {
-        if (equationList[y]?.[neighbor]) {
-          return equationList[x][neighbor] / equationList[y][neighbor];
-        }
+    if (x === y) return 1;
+
+    visited.add(x);
+    for (const neighbor in equationList[x]) {
+      if (!visited.has(neighbor)) {
+        const result = dfs(neighbor, y, visited);
+        if (result !== -1) return equationList[x][neighbor] * result;
       }
     }
+
     return -1;
   };
 
   for (let i = 0; i < queries.length; i++) {
+    const visited = new Set();
     let [x, y] = queries[i];
-    answer.push(dfs(x, y));
+    answer.push(dfs(x, y, visited));
   }
 
   return answer;
