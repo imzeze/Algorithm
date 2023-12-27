@@ -13,14 +13,14 @@
 var levelOrder = function (root) {
   const answer = [];
 
-  return dfs(root, answer, 0);
+  return bfs(root, answer, 0);
 };
 
-const dfs = (root, answer, level) => {
+const bfs = (root, answer, level) => {
   if (!root || root.val === undefined) return answer;
 
-  if (root.left) dfs(root.left, answer, level + 1);
-  if (root.right) dfs(root.right, answer, level + 1);
+  if (root.left) bfs(root.left, answer, level + 1);
+  if (root.right) bfs(root.right, answer, level + 1);
 
   if (answer[level]) answer[level].push(root.val);
   else answer[level] = [root.val];
